@@ -9,11 +9,10 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Hannah Meisner.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
-
 
 # -----------------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -95,8 +94,16 @@ def draw_parallel_lines(n, point, length, window):
       :type length: int
       :type window: rg.RoseWindow
     """
+
+    for k in range(n):
+        point1 = rg.Point(point.x, point.y + (k * 30))
+        point2 = rg.Point((point.x + length), point.y + (k * 30))
+        line = rg.Line(point1, point2)
+        line.attach_to(window)
+    window.render()
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -160,7 +167,11 @@ def draw_lines(n, point, window):
       :type point: rg.Point
       :type window: rg.RoseWindow
     """
-    # -------------------------------------------------------------------------
+
+    for k in range(n):
+        point1 = rg.Point(point.x, point.y)
+
+        # -------------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
