@@ -170,7 +170,6 @@ def draw_lines(n, point, window):
     for k in range(n):
         leftPoint = rg.Point(point.x, point.y)
         rightPoint = rg.Point(point.x + 100, (point.y - 100) + (k * (200/(n-1))))
-        print(rightPoint)
         line = rg.Line(leftPoint, rightPoint)
         line.attach_to(window)
     window.render()
