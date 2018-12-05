@@ -211,7 +211,7 @@ def factorial(n):
 def run_test_count_cosines_from():
     """ Tests the   count_cosines_from   function. """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # DONE: 6. Implement this TEST function.
     #   It TESTS the  count_cosines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -305,7 +305,7 @@ def count_cosines_from(m, n, x):
             count = count + 1
     return count
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -317,7 +317,7 @@ def count_cosines_from(m, n, x):
 def run_test_sum_unit_fractions_from():
     """ Tests the   sum_unit_fractions_from   function. """
     # -------------------------------------------------------------------------
-    # TODO: 8. Implement this TEST function.
+    # DONE: 8. Implement this TEST function.
     #   It TESTS the  sum_unit_fractions_from  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     # Use the same 4-step process as for previous TEST functions.
@@ -351,8 +351,13 @@ def sum_unit_fractions_from(m, n):
          which is about 0.545635
       -- sum_unit_fractions_from(10, 9000)  returns about  6.853
     """
+    sum = 0
+    for k in range(n - m + 1):
+        sum = sum + 1/(m + k)
+    return sum
+
     # -------------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
