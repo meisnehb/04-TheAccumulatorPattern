@@ -134,6 +134,7 @@ def run_test_draw_circles_from_rectangle():
     print('--------------------------------------------------')
 
     window1 = rg.RoseWindow(720, 500)
+    window2 = rg.RoseWindow(700, 500)
 
     # Test 1:
     rectangle = rg.Rectangle(rg.Point(400, 250), rg.Point(440, 325))
@@ -149,8 +150,18 @@ def run_test_draw_circles_from_rectangle():
     rectangle.fill_color = 'blue'
     draw_circles_from_rectangle(8, 3, rectangle, window1)
 
+    # Test 3:
+    rectangle = rg.Rectangle(rg.Point(400, 300), rg.Point(550, 400))
+    rectangle.outline_color = 'black'
+    rectangle.outline_thickness = '2'
+    rectangle.fill_color = 'white'
+    draw_circles_from_rectangle(2, 2, rectangle, window2)
+
+    window1.close_on_mouse_click()
+    window2.close_on_mouse_click()
+
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function.
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
@@ -219,8 +230,8 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
 
         xL = xL - (2 * radiusL)
 
-    radiusUp = (rectangle.corner_2.x - rectangle.corner_1.x) / 2
-    centerUp = rg.Point(rectangle.get_center().x,  rectangle.get_upper_left_corner().y - radiusUp)
+    radiusUp = (rectangle.get_lower_right_corner().x - rectangle.get_lower_left_corner().x) / 2
+    centerUp = rg.Point(rectangle.get_center().x, rectangle.get_upper_left_corner().y - radiusUp)
     circleUp = rg.Circle(centerUp, radiusUp)
     circleUp.outline_color = rectangle.outline_color
     circleUp.attach_to(window)
@@ -236,9 +247,8 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
 
     window.render()
 
-
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
