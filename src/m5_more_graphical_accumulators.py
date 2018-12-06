@@ -100,14 +100,16 @@ def draw_squares_from_circle(n, circle, window):
     circle.attach_to(window)
     square1 = rg.Square(circle.center, 2 * circle.radius)
     square1.attach_to(window)
+
+    x = circle.center.x + circle.radius
+    y = circle.center.y + circle.radius
+
     for k in range(n-1):
-        x = circle.center.x + circle.radius
-        y = circle.center.y + circle.radius
         square2 = rg.Square(rg.Point(x, y), 2 * circle.radius)
         square2.attach_to(window)
 
-        circle.center.x = square2.center.x
-        circle.center.y = square2.center.y
+        x = x + circle.radius
+        y = y + circle.radius
     window.render()
     # -------------------------------------------------------------------------
     # DONE: 2. Implement and test this function.
@@ -339,8 +341,31 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type n: int
       :type window: rg.RoseWindow
       """
+
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+
+    point1 = rectangle1.get_center()
+    point2 = rectangle2.get_center()
+
+    for k in range(n):
+        line = rg.Line(point1, point2)
+        line.thickness = 5
+
+        if k % 2 == 0:
+            line.color = rectangle1.outline_color
+        else:
+            line.color = rectangle2.outline_color
+        line.attach_to(window)
+
+        point1 = rg.Point(point1.x - (rectangle1.get_center().x - rectangle1.get_lower_left_corner().x), point1.y
+                          - (rectangle1.get_center().y - rectangle1.get_lower_left_corner().y))
+        point2 = rg.Point(point2.x - (rectangle1.get_center().x - rectangle1.get_lower_left_corner().x), point2.y
+                          - (rectangle1.get_center().y - rectangle1.get_lower_left_corner().y))
+
+    window.render()
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
